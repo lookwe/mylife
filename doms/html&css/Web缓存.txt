@@ -1,0 +1,25 @@
+sessionStorage 会话级别   关闭窗口则自动清除
+localStorage   永久级别   需手动删除
+
+//添加
+localStorage.setItem('key','value')   保存一个值
+localStorage.key = value    //等同上面
+
+
+//按key查询
+localStorage.getItem('key')  //读取
+localStorage.key        //等同上
+
+//查询所有
+localStorage.valueof()  //读取储存的所有数据
+localStorage.key[0]    //读取第一条数据
+
+//清除
+localStorage.removeItem('key')  //删除
+localStorage.clear()  情况所有数据
+
+
+//检查是否存在
+localStorage.hasOwnProperty('key')  //查看是否存在   在：true
+
+ 

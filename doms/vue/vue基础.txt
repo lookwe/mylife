@@ -1,0 +1,359 @@
+﻿使用步骤：
+1、安装node.js   检查是否安装成功 node -v
+2、安装淘宝npm镜像  npm install -g cnpm --registry=https://registry.npm.taobao.org
+3、安装全局vue-cli 快点搭建vue项目 cnpm install --global vue-cli 检查是否成功 输：vue 后看打印信息
+   或者指定Vue/cli版本安装 ==》    cnpm install -g vue-cli@2.9.6 
+
+4、新建Vue项目: vue init webpack 项目名
+回车之后会有3个提示分别是: 
+    1.网页的title名是什么 （大小写检查严禁） 
+    2.项目的描述
+    3.作者是谁
+在回车则让你判断选择项目类型：Y/N
+    1.是否路由器
+    2.ESlint 代码检查 测试间断不介意添加 因素语法要求很严格 多一个或者少一个空格都报错
+    3.Set up 测试环境
+    4.Set e2e  测试环境
+5、cd到项目目录 下载项目需要的依赖 npm install
+6、运行项目  npm run dev
+如果运行出错 试试 npm i prettier@~1.12.0 然后在启动
+
+
+npm安装模块
+【npm install xxx】利用 npm 安装xxx模块到当前命令行所在目录；
+【npm install -g xxx】利用npm安装全局模块xxx；
+本地安装时将模块写入package.json中：
+
+【npm install xxx】安装但不写入package.json；
+【npm install xxx –save】 安装并写入package.json的”dependencies”中；
+【npm install xxx –save-dev】安装并写入package.json的”devDependencies”中。
+npm 删除模块
+【npm uninstall xxx】删除xxx模块； 
+【npm uninstall -g xxx】删除全局模块xxx；
+-----------------------------------------------------------------------------------------------------------
+
+Vue参数
+1、el  选择的元素
+2、data 属性的操作 初始化赋值
+3、methods  事件方法
+4、watch    监听 观察Vue实例数据的改变
+5、computed  计算属性 属性赋值时候 set/get/add/delete 在函数体中新建方法，进行对已有属性计算或者更改，在其他就可以直接调用了
+6、components:  注册组件集合  比如:var TodoItem = { template:'<p>我是一个公用组件<p/>'} 
+7、props:     接受父组件传来的信息 <子组件 :元素=“值”> props:{ 元素:{类型.默认值}}
+8、created:{}  组件实例化后
+9、mounted:{}  组件加加载完毕后
+10、filters:{} 过滤
+11、provide|inject  provide提供变量 inject 注入父变量使用   祖孙级通信，只能祖传递孙或子
+
+  
+父:provide：{        
+  test:'测试数据'
+}
+或者 provide(){
+  return ['']
+}
+子:inject:['test']
+this.test  <!-- 打印：测试数据 -->
+
+1. methods 和 computed 区别？
+   1.methods  如果行数里绑定了一个属性值，那么每次加载页面渲染这个属性它都会执行一次。
+   
+   2.computed 同样，它绑定了一个属性，而这个是属性没有发生变化时，他不会执行，而是获取缓存中的。属性发生改变才重新执行 
+
+//缓存组件激活调用activated()
+
+如果想要整个视图都渲染完成后执行行数，那么可以使用:$nexTick()
+mounted:function(){
+  this.$nextTick(function(){
+    //操作
+  })
+}
+该钩子在服务器端渲染期间不被调用。
+
+
+核心中间
+export default{
+  name : '本组件名',
+  data()....
+}
+
+var data={a=1} Object.freeze(data) vue不用响应式跟踪数据了 
+
+<div id="vue_det">
+   <h1>site : {{site}}</h1>
+   <h1>url : {{url}}</h1>
+   <h1>Alexa : {{alexa}}</h1>
+</div>
+
+//实例化一个vue构造器
+var vm = new Vue({
+    el:'ID你要修饰的元素',
+    //下面是对应上面元素中的属性
+    site:'11111',
+    url: 'www.hzf.com',
+    //或者可以应以json var data = {site:'1111',url:'www.baidu.com'}
+    data: data
+    
+ })
+//当调用vm 或者 data里的属性或者赋值修改。可以下
+
+vm.$data.url
+vm.url
+data.url
+
+//插值 第一种方式 文本赋值
+<div id="app">
+  <p>{{ message }}</p>
+</div>
+new Vue({
+   el:'#app',
+   data:{message:'你好'}
+})
+
+//插值 第2种方式 v-html指令
+<div id="app">
+  <div v-html="message"></div>
+</div>
+new Vue({
+  el:'#app',
+  data:{ message = '<h2>菜鸟教程</h2>' }
+  
+})
+===================》事件 和javasrcipt差不多的事件都用
+@Click=""  
+@keyup=""   监听键盘事件。按了什么键盘都能捕获到 也可以监听指定按钮。比如:@keyup.tab 指定监听tab按钮
+filter(function(list){})  过滤事件比如：抽取偶数。进行过滤处理
+
+====================》v-if='属性名' 条件判断
+new Vue({
+  el:'id',
+  data:{ 属性名 : true/false}
+})
+
+v-bind:href='属性' --用a标签 或者 v-bind:其他标签属性 缩写 :href
+v-bind:class=“{样式类名 : 布尔值属性}” 可以绑定多个 :class 中间冒号隔开
+new Vue({
+  el:'id'
+  data:{ 属性: 'www.baidu.com'},
+ 布尔值属性：true/false 
+})
+----if else
+<div v-if="表达式(可以写js的函数)"></div>
+<div v-else></div>
+
+----if else if
+<div v-if="属性 === 1"></div>
+<div v-else-if="属性 === 2"></div> 可以有多个 v-else-if
+<div v-else></div>
+new Vue({
+ el:id,
+ data:{属性: '1/2/3'}
+})
+
+====================》v-model 数据绑定 类似与给value赋值 ------- 双项数据绑定
+在v-model还有一些特殊事件方法如下:
+v-model.lazy=""   表示当元素光标离开后在进行数据双向绑定
+v-model.number=""  表示想要将用户输入的值转为Number触发
+v-model.trim=""   自动祛除收尾空格
+
+input v-model="属性"
+v-on  元素的监听 比如：单击事件等等 缩写 @click=''
+v-on:click = '属性名'
+new Vue({
+  el:'id',
+  methods:{  //见{}的表示乐园放多个
+    属性名 : founction(){
+      //执行的事 多个事件又逗号隔开
+    }
+  }
+})
+v-show="属性=true/fales"
+
+====================》循环
+<li v-for='user in users'></li>
+new Vue({
+ el:id,
+ data:{users:[name='aaa',name=1]}
+})
+
+<li v-for='(value,index) in users':key="index">
+  {{key}}:{{value}}
+</li>
+new Vue({
+ el:id,
+ data:{users:[name='aaa',sex='男']}
+})
+
+
+====================》监听
+input v-model="属性"
+var mv = new Vue({
+ el:id,
+ data:{属性：值},
+ //监听事件
+ watch:{
+   属性:function(val){
+      //input输入的值
+   }
+ }
+ mv.$watch('属性',fuction(改变前值，修改后值){
+   //操作
+ })
+})
+watch:{
+  
+}
+====================》过滤
+filters:{
+  addTime(value){ return ‘日期是:’+ new date()}
+}
+{{ text | addTime }}  //text日期是:2015/2/24 
+
+====================》组件
+全局Vue.component("名字",{ props:["接受内容"], template:"DOM元素（可以输入{{接受内容}}）"})
+局部components:{ "名字":"定义组件"}
+
+动态组件: <component :is="视图名属性"><component/>  一个容器中可以动态切换视图 每次切换不会缓存
+缓存动态：<keep-alive>动态组件<keep-alive/>  切换回被缓存  注意:有时候需要实时更新的就不能用缓存了
+异步加载组件:conts bar = ()=> import('./组件路径')
+
+组件就是单个小的实例
+this.$emit("通信属性",通信内容)
+父实例里调用 比如:@cheng="通信属性" @click="通信属性"
+
+====================》混入组件  自定义一些vue的函数，然后 mixins:[属性名] 加入到自定组件中
+比如: var myMixin = { data:{return:{ msg:'holled'}} }
+new Vue({ mixins:[myMixin] })
+
+或者全局:在main.js中
+Vue.mixin({
+  var 全局名称 = this.$options.全局名称
+  if(全局名称){
+    //执行的事件
+  }
+})
+
+====================》自定义指令
+directive('名字',{    //全局
+  insertd:function(el){
+    el.fouce()
+  }
+})
+directives:{         局部
+ 名字:fuction(){
+  //过程
+ }
+}
+
+
+====================》插槽  父子组件数据通信 
+单个插槽  <slot/>    在父页面中引用子组件标签里面加内容，子页面中使用 <slot/>标签接受
+具名插槽  <slot name="父页面引用子组件标签里的属性"/> 当有过儿插槽时候可以使用添加名字进去区分  
+          父:<div slot='div-name'>插槽<div/>
+          子:<slot name='div-name'><slot/>
+
+作用域插槽 子传父   在子<slot text=""/>  父 <p slot-scope="key">{{key.text}}<p/>
+
+
+===================》 Axiso 请求
+
+补充点:queryString 使用
+qs.Stringify(obj) 或者 ({obj...})  将括号里的对象转换成请求需要的格式 多个参数用中括号括起来。
+qs.parsse(str,[sep]...)  将参数类型字符串转为对象类型。和上面相反
+qs.escape(str)   将参数转码。 转为二进制格式 
+qs.unescape(str)   将二进制的 转为 中文
+
+post 请求
+this.$axios.post(url,qs.stringfig({
+   name:'张xx...'
+})).then(res=>{
+  console.log(res.data)
+}).catch(error =>{
+  console.log(error)
+})
+
+Get 请求
+this.$axios.get(url,{
+  params:{
+     name:'张三'
+  }
+})....
+
+还可以多个并发执行
+function get1(){
+ return axios.get(url)
+}
+function get2(){
+ return axios.get(url)
+}
+this.$axios.all([get1(),get2()])
+.then(axios.spread(function(res1,res2){
+   //请求都执行完成后
+
+}))
+
+
+
+
+npm run dev 启动 
+程序入门在main.js下  可以配置初始页面
+
+
+scoped 修饰style样式作用域 表示只作用当前组件 不加则全部都用
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

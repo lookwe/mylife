@@ -1,0 +1,65 @@
+1、什么是Vuex?
+
+Vuex是Vue.jy应用程序的状态管理模式+库 。它充当应用程序中所有组件的集中存储。其规则确保状态只能以可预测方式进行更变、
+不适合简单超小型单页程序，因为使用了Vuex。则会带来更多的概率和样板成本。
+
+
+2.安装引入
+npm install vuex --save
+
+
+3.使用
+ 1、在main.js中添加代码
+
+import 'es6-promise/auto'
+import Vuex from'vuex'
+
+Vue.use(Vuex);
+
+const store = new Vuex.Store({ 
+    //存储空间(DB/数据库)
+    state:{
+       //任何地方都可以访问到， 前提是store 因为到挂彩点了
+       name:'黄钟飞'
+    },
+    //过滤 摘要
+    getters:{
+       getName(state){
+          if(state.name === null){
+            return '没有数据'
+          }
+  	  state.name;
+       }
+    },
+    //数据操作（类似service/Dao） 唯一能改state(DB)信息的方法 
+    mutations:{
+       setName(){
+          state.name = state.name + '我发生改变了。'
+       }
+    },
+    //行动调用，不是必须品。(类似控制层、servlet)
+    actions:{
+       setByName(context){
+ 	  context.commit("setName");		
+       }
+    }
+
+  });
+
+new Vue({
+  name:"#app",
+  store,
+  ..... 
+
+})
+state:存储数据信息(DB数据库)
+访问Vuex数据:(原始JDBC)                               this.$store.state.name
+直接调用操作mutations:(Service/操作数据库)：          this.$store.commit('setName');  //改变后的数据任何他引入他的也会被自动改变
+带有逻辑的访问数据:getters:（Dao获取并返回想要的数据） this.$store.getName()
+调用action(控制层/调用mutations)                        this.$store.dispatch('setByName') 
+
+
+如何使用Vuex涉及到表单处理或者双项绑定的话，请参考官网
+
+
+

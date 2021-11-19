@@ -1,0 +1,38 @@
+Git安装包淘宝镜像：http://npm.taobao.org/mirrors/git-for-windows/
+
+所有的配置命令，始终都会读写到配置文件中，且在本地目录文件夹中
+查配置：
+git comfig -l	所有配置
+git config --system --list    系统配置
+git config --global --list  自己配置
+
+设置用户
+git config --global user.name = 'xxx'
+git config --global user.email = 'xxx'
+
+提交
+git add file		提交到缓冲区
+git commit -m '备注’	提交到本地git仓库
+git push			提交到远程git仓库
+
+回退
+git checkout	从缓冲区回退本地项目
+git reset		从本地仓库回退到缓冲区
+git clone
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
