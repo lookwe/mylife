@@ -29,6 +29,6 @@ const observer = new IntersectionObserver((entries = []) => {
 })
 
 images.forEach(image => {
-    // 遍历每个img元素，并放入观察
+    // 遍历每个img元素，并放入观察者
     observer.observe(image);
 })
