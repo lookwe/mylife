@@ -4,7 +4,8 @@
 
 
 ## 心流状态
-> 一个能让专注力提升N倍的专业，并且有幸福感，成就感. [心流](https://vd3.bdstatic.com/mda-kcvqvabq5fimw1bx/hd/mda-kcvqvabq5fimw1bx.mp4)
+> 一个能让专注力提升N倍的专业，并且有幸福感，成就感. 
+<a href="https://vd3.bdstatic.com/mda-kcvqvabq5fimw1bx/hd/mda-kcvqvabq5fimw1bx.mp4" target="_blank">心流状态是什么</a>
 
 * 进入心流常用5中方法
 1. 给自己足够多的时间
