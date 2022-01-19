@@ -1,0 +1,40 @@
+display:flex; 在父元素添加  作用给子类支持flex弹性盒子模型 （Flex容器）它子元素自动成为容器成员
+---------------------
+flex:1 ;拉伸比例
+flex-direction:(浮动)
+    左右布局
+    1、row   主轴为水平方向 起点在左端（默认） 类似于float:left 
+    2、flex-direction: row-reverse    主轴为水平方向 起点在右端 （与row相反）类似于float:right 
+    
+    上下布局（这样布局后，水平和垂直的布局使用，会相反）
+    3、flex-direction:column;   主轴为垂直方向 起点在上端 与row 相似
+    4、column-reverse 主轴为垂直方向 起点在下端端 与column相似
+
+flex-wrap:(换行)
+    1、nowrap  默认值 伸缩容器单行显示 伸缩项目不换行
+    2、wrap  伸缩容器单行显示时 伸缩项目换行显示向下挤出空间
+    3、wrap-reverse  换行想上挤出空间并倒序显示
+
+justify-content:(内容水平位置)
+    1、flex-start  伸缩项目向一行最右端靠齐初始位置
+    2、justify-content: flex-end    伸缩项目向一行最右端靠齐结束位置
+    3、justify-content: center    伸缩项目 居中靠齐
+    4、justify-content: space-between 伸缩项目向一行平均分布显示 第一项目显示在最left开始
+    5、justify-content: space-around  伸缩项目向一行平均分布显示 左右最边上两端保留一半空间
+
+align-items:(内容垂直位置)
+	1、flex-start  伸缩项目 空间项目在上测位置显示
+	2、flex-end   伸缩项目 空间项目在下测位置显示
+	3、align-items: center   伸缩项 在中间显示
+	4、align-items: baseline  根据第一行文字的基线对齐
+	5、stretch  默认 垂直填充伸缩容器
+
+
+移动端 字体响应。
+document.documentElemnet.style.fontSize = 20 * document.documentElement.clientWidth / 375 + 'px'
+window.onresize = function(){
+  docuemnt.document.documentElement.fontSize = 20 * document.doucmentElement.cilientWidth / 375  + 'px'
+
+}
+
+vue px2rem-loader 组件 安装配置后即可自动响应 px转rem
