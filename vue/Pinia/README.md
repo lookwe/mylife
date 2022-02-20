@@ -91,3 +91,14 @@ const store = mainStore();
    import { mainStore } from "../stroe";
    mainStore.onUpdateUser()
     ```
+
+    ## getters 读取数据
+    * 功能非常类型 计算属性，具有缓存特性；
+    * getters定义函数数，可以传入参数state或者直接访问this, ts模式下函数要指定返回string类型
+    ```ts
+     getters: {
+       getUserPhone():String {
+           return this.phone.toString().replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2')
+       }
+   }
+    ```
