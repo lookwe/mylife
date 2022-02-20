@@ -12,3 +12,8 @@ const store = mainStore();
 
 const { index, msg } = storeToRefs(store);
 ```
+
+## actions定义函数时this指向的坑
+* 在配置中，actions定义操作状态逻辑，如果是剪头函数
+访问this.store, this指针我在外层
+* 建议使用普通函数

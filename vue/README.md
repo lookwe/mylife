@@ -219,7 +219,7 @@ chainWebpack(config) {
 * 创建3种场景环境配置文件
     1. env.dev 开发环境
     2. env.pro 生产环境
-    3. env.test 
+    3. env.test 测试环境
 * 使用配置判断： `process.env.xxx`    
   
 ### 模拟数据Mock  

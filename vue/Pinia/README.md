@@ -60,3 +60,34 @@ import { mainStore } from "../stroe";
 const store = mainStore();
 </script>
 ```
+
+## pinia修改状态4中方式
+1. vue文件引入store对象，直接改动；方便快捷 `store.index = 123`
+2. 使用store.$patch方法修改，参数提供2种：
+    * 对象方式： 适用多个属性改动，但是不能写业代码
+    ```javascript
+    store.$patch({
+        index: store.index + 2
+    })
+    ```
+
+    * 函数方式: 使用与有单独该文件的业务逻辑单面
+    ```javascript
+    store.$patch((state) => {
+        if (state.index === 2) {
+            state.name = '超过2了'
+        }
+    })
+    ```
+* 使用pinia actions 封装修改操作的函数和业务代码，多个页面使用
+    ```javascript
+    // stroe.js 定义
+   actions: {
+       onUpdateUser() {
+           this.store.index = 123
+       }
+   }
+   // vue 页面使用
+   import { mainStore } from "../stroe";
+   mainStore.onUpdateUser()
+    ```
