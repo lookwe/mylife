@@ -92,13 +92,19 @@ const store = mainStore();
    mainStore.onUpdateUser()
     ```
 
-    ## getters 读取数据
-    * 功能非常类型 计算属性，具有缓存特性；
-    * getters定义函数数，可以传入参数state或者直接访问this, ts模式下函数要指定返回string类型
-    ```ts
-     getters: {
-       getUserPhone():String {
-           return this.phone.toString().replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2')
-       }
-   }
-    ```
+## getters 读取数据
+* 功能非常类型 计算属性，具有缓存特性；
+* getters定义函数数，可以传入参数state或者直接访问this, ts模式下函数要指定返回string类型
+```ts
+    getters: {
+        getUserPhone():String {
+            return this.phone.toString().replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2')
+        }
+    }
+```
+
+# 多stroe仓库是，可以互相调用对方属性和方法
+* 可以把pinia stroe的状态，当成是一个封装函数 并且导出的响应式对象的一个js文件；
+1. 导入 const user from '/pinia/stroe/user.ts'
+2. 直接使用 user().getUserInfo() 或者 user().name
+
