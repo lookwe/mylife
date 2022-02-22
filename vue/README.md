@@ -153,45 +153,53 @@
  * **实现思路**：
 
 ### 动态导航菜单
+* 以routes这个数组的数据，进行元数据处理；
+* 对html结构进行数据循环，循环中通过v-if,v-else分别处理有子集和无子集的两种情况
+  * 无子集：就直接显示数据；
+  * 有子集：则通过一个函数式组件进行递归
 
 
 ### 请求服务器封装
 
 
+                               
 ### 配置全局svg组件
 
 * **对应的需求**：当我们SVG越来越多。且还方便管理，使用也非常繁琐，比如,去阿里云图库找，还需要打包出来。还要做对应处理，显得非常吃力。
 
 * **解决方案**： 利用vuecli嵌入的webpack。给他加一个svg文件处理的 `loader`。然后动态加载他们，并定义个vue组件。组件控制他的样式，大小，布局等。提前你需要svg存放在 `icon/svg` 文件目录下
-
   安装处理svg插件
-
   ```
   npm i svg-sprite-loader -D
   ```
-
   vue.config.js中配置。
-
-  ```javascript
-  chainWebpack(config) {
-      // 配置svg规则
-      // 1. 默认svg的规则不会碰他，得排除 让其他svg规则排除的自己定义目录下svg处理
-      config.module.rule('svg')
-          .exclude.add(ICONS_FOLDER) //ICONS_FOLDER =》 icon目录
-  
-      // 2 新增追加 icon规则 只包含我自己的icons目录4
-      config.module.rule('icons')
-          .test(/\.svg$/) // 自定义规则
-          .include.add(ICONS_FOLDER).end() // 指定目录 如果没有加end()会报错.这当前事例已经进入add数组去，取消退回来
-          .use('svg-sprite-loader')
-          .loader('svg-sprite-loader')
-          .options({ symbolId: 'icon-[name]'})
-  }
-  
-  // 配置成功后可以执行 vue inspct --rule [规则名]  查看是否成功
-  ```
-
   icon目录下创建index.js 。并在main.js引入；
+* 高级配置 chain Webpack
+* 案例1：开发中SVG处理
+    * 往常开发出来svg会网上下载下来，为了处理兼容性每次都需要打包，生成好几个不同的字体文件，不同浏览器输出不同字体文件
+    * 问题： 如何svg需要改变，又要需要重新下载打包 在放到项目里。变得繁琐不方便
+
+    * 解决方案1： svg-sprite-loader 组件 安装:npm i svg-sprite-loader -D
+    * vue-cli-service 主要作用就是帮你把svg打包打一个矢量图库里，每一个svg就是会里面多加一个id为他名称的资源，并且会放在网页顶部
+    * 在配置规则时候 可以使用 vue inspect --rule [svg] 规则名
+
+* 方案2:  用线上 的http资源直接饮用
+```javascript
+chainWebpack(config) {
+    // 配置svg规则
+    // 1. 默认svg的规则不会碰他，得排除 让其他svg规则排除的自己定义目录下svg处理
+    config.module.rule('svg')
+        .exclude.add(ICONS_FOLDER) //ICONS_FOLDER =》 icon目录
+
+    // 2 新增追加 icon规则 只包含我自己的icons目录4
+    config.module.rule('icons')
+        .test(/\.svg$/) // 自定义规则
+        .include.add(ICONS_FOLDER).end() // 指定目录 如果没有加end()会报错.这当前事例已经进入add数组去，取消退回来
+        .use('svg-sprite-loader')
+        .loader('svg-sprite-loader')
+        .options({ symbolId: 'icon-[name]'})
+}
+```
 
   ```javascript
   import Vue from 'vue'
@@ -208,10 +216,17 @@
   ```
 
 ### 开发中环境配置策略
-  
+* 创建3种场景环境配置文件
+    1. env.dev 开发环境
+    2. env.pro 生产环境
+    3. env.test 测试环境
+* 使用配置判断： `process.env.xxx`    
   
 ### 模拟数据Mock  
-
+* 创建一个mock文件夹，并在vue.config.js中添加配置 proxy中的else部分
+* 配置mock与真实环境api的切换 （注意，接口名与后端保持一致） 
+* 安装插件cross-env,使之在windows环境下生效； 
+* 修改pack.json的配置
 
 ### 请求代理跨域
 ```
