@@ -1,4 +1,4 @@
-﻿使用步骤：
+﻿使用步骤：Vue3
 1、安装node.js   检查是否安装成功 node -v
 2、安装淘宝npm镜像  npm install -g cnpm --registry=https://registry.npm.taobao.org
 3、安装全局vue-cli 快点搭建vue项目 cnpm install --global vue-cli 检查是否成功 输：vue 后看打印信息
