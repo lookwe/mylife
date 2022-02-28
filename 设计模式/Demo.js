@@ -41,3 +41,23 @@ new StrategyPattern(methodSubtract).run(10, 5)  // 5
 new StrategyPattern(methodMultiply).run(10, 5)  // 50
 
 
+/** 简单工厂模式 */
+function phone(name) {
+    const phoneObj = new Object();
+    phoneObj.screen = '全面屏'
+    phoneObj.wifi = 'WIFI 2.0'
+    phoneObj.pixel = '6400W'
+
+    if (name == '华为') {
+        phoneObj.price = '5400'
+    } else if(name === '苹果') {
+        phoneObj.price = '8999'
+    } else if (name === '小米') {
+        phoneObj.price = '2999'
+    } else {
+        return {}
+    }
+}
+const HW = phone('华为')
+const iphone = phone('苹果')
+const MI = phone('小米')
