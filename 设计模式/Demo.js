@@ -41,23 +41,31 @@ new StrategyPattern(methodSubtract).run(10, 5)  // 5
 new StrategyPattern(methodMultiply).run(10, 5)  // 50
 
 
-/** 简单工厂模式 */
-function phone(name) {
-    const phoneObj = new Object();
-    phoneObj.screen = '全面屏'
-    phoneObj.wifi = 'WIFI 2.0'
-    phoneObj.pixel = '6400W'
+/** 工厂模式 */
+function PhoneFactory(name) {
+    const phoneBase = Object.create(null);
+    phoneBase.screen = '全面屏'
+    phoneBase.wifi = 'WIFI 2.0'
+    phoneBase.pixel = '6400W'
 
-    if (name == '华为') {
-        phoneObj.price = '5400'
-    } else if(name === '苹果') {
-        phoneObj.price = '8999'
-    } else if (name === '小米') {
-        phoneObj.price = '2999'
+    if (this instanceof PhoneFactory) {
+        const phone = new this.__proto__[name](phoneBase)
+        return phone
     } else {
-        return {}
+        return new PhoneFactory(name)
     }
 }
-const HW = phone('华为')
-const iphone = phone('苹果')
-const MI = phone('小米')
+PhoneFactory.prototype = {
+    HW: function (base) {
+        return {...base, name: '华为'}
+    },
+    iphone:  function (base) {
+        return {...base, name: '苹果'}
+    },
+    MI: function (base) {
+        return {...base, name: '小米'}
+    }
+}
+const HW = new PhoneFactory('HW')
+const iphone = PhoneFactory('iphone')
+const MI = PhoneFactory('MI')
