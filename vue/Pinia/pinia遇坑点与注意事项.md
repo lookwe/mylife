@@ -17,3 +17,7 @@ const { index, msg } = storeToRefs(store);
 * 在配置中，actions定义操作状态逻辑，如果是剪头函数
 访问this.store, this指针我在外层
 * 建议使用普通函数
+
+## Pinia安装与调用
+* 在开发中 pinia遇到最低的错误就是忘记他们返回的事函数，而非对象
+* 安装和调用也是同理，pinia大部分返回的都是函数，所以要小调用()，才能正在使用

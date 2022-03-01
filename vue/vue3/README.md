@@ -50,3 +50,4 @@ return {
     ...toRefs(user)
 }
 ```
+* reactive 区别与ref 他返回的响应式使对象每有被`refImpl`包裹，所以不需要ref一样`.value`才能获取到值
