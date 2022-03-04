@@ -58,8 +58,9 @@
 * `元素选择器：` div{}
 * `通配符选择器：` *{}
 * `后代选择器：` div p{}
-* `子选择器：` div,p  和后代不一样的是，只筛选div下所有第一层p标签
-* `兄弟选择器：` div + p 筛选div后面一个p元素
+* `子选择器：` div>p{}  和后代不一样的是，只筛选div下所有第一层p标签
+* `兄弟选择器：` div+p{} 筛选div后面一个p元素
+* `交集选择器`: div,p,.name{} 选择的元素共享一个样式 
 
 * **属性选择器**
     * `属性选择器：` a[target=_blank] 筛选所有a标签中属性target是_blank的
@@ -68,17 +69,62 @@
     * `属性结尾选择器：` img[src$='.png'] 筛选img属性src以 .png 结尾的img标签
 
 * **伪类选择器**
-    * `焦点伪类：`:focus
-    * `悬浮伪类：`:hover
-    * `前置伪类：p`::after 往p元素前面追加内容
-    * `后置伪类：p`::before 往p元素后面追加内容
-    * `光棍伪类：p`:empty 选择没有子元素的p标签
-    * `取反伪类：div`:not(p) 选择div下所有不是p标签的元素
-    * `首个选择器：` div p:first-of-type 或:first-child 选择div下面第一个p标签
+    * `焦点伪类：` :focus
+    * `悬浮伪类：` :hover
+    * `前置伪类`：p::after 往p元素前面追加内容
+    * `后置伪类`：p::before 往p元素后面追加内容
+    * `光棍伪类`：p`:empty 选择没有子元素的p标签
+    * `取反伪类`：div`:not(p) 选择div下所有不是p标签的元素
+    * `首个选择器`： div p:first-of-type 或:first-child 选择div下面第一个p标签
     * `末尾选择器：` ul li:last-child 或 last-of-type 选择ul下最后一个li
-    * `正序筛选伪类：`:nth-child(2)  正序第一个开始自由筛选第几个元素
-    * `倒序筛选伪类：`:nth-last-child(2)  倒序最末尾开始自由筛选第几个元素
+    * `正序筛选伪类：` :nth-child(2)  正序第一个开始自由筛选第几个元素
+    * `倒序筛选伪类：` :nth-last-child(2)  倒序最末尾开始自由筛选第几个元素
     * `注意点` nth-child(2) 和 nth-of-type(2) 区别：
         * p:nth-child(2) 找位置是2的p元素，如果位置2不是p元素不生效
         * p:nth-of-type(2) 找下面p元素中排在第二的，及时前面有很多其他元素，类似兄弟选择
 
+## CSS开发常用函数
+1. `calc() `: 计算箱数函数；
+    ```css
+    .test {
+        /* 最终宽度是： 父亲总宽度 减去 200px  */
+        width: calc(100% - 200px);
+    }
+    ```
+2. `attr() `: 获取元素标签上的属性值，很js中``getAttribute()``方法读取方式一样   
+    html
+    ```html
+    <div data-content="我是div" class="div-box">我是div</div>
+    ```
+    css
+    ```css
+    .div-box {
+        :before {
+             /* content： "我是div"  */
+            content: attr(data-content)
+        }
+    }
+    ```
+    目前该函数具有兼容性，也暂时支持`content`属性，其他属性试验中...
+
+3. `linear-gradient() :` 上下背景颜色渐变
+    ```css
+    .test {
+        background-image: linear-gradient(red, yellow, blue);
+    }
+    ```
+4. `radial-gradient() :` 圆环背景颜色渐变。实现太阳，灯光逼真效果；
+    ```css
+    .test {
+        background-image: radial-gradient(#fff, #000);
+    }
+    ```
+5. `var() :` 自定义全局属性，和less定义变量一个道理
+    ```css
+    :root {
+        --globl-color: red;
+    }
+    .test {
+        color: var(--globl-color)
+    }
+    ```
