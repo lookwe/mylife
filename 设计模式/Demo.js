@@ -69,3 +69,31 @@ PhoneFactory.prototype = {
 const HW = new PhoneFactory('HW')
 const iphone = PhoneFactory('iphone')
 const MI = PhoneFactory('MI')
+
+
+/** 代理模式 */
+
+// 受代理人
+let user = {
+    name: "小红",
+    age: 15
+  };
+
+  // 用户代理人
+const  userProxy = new Proxy(user, {
+    get(target, key) {
+      let result = target[key];
+      if (key === "age") result += "岁";
+      return result;
+    },
+    set(target, key, value) {
+      if (key === "age" && typeof value !== "number") {
+        throw Error("age字段必须为Number类型");
+      }
+      return Reflect.set(target, key, value);
+    }
+});
+// 处理访问
+console.log(`我叫${userProxy.name}  我今年${userProxy.age}了`);
+// 处理修改
+userProxy.age = "abc";
