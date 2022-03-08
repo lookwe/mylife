@@ -84,6 +84,7 @@ export function parseTime(time, cFormat) {
   return time_str
 }
 ```
+
 ## 获取中午提示时间发生点
 ```javascript
 /**
@@ -129,4 +130,33 @@ export function formatTime(time, option) {
     )
   }
 }
+```
+
+## 毫秒 转 时分秒
+```js
+/**
+ * 毫秒数 转【时分秒】
+ * @param number time毫秒
+ */
+function formatDuring(time) {
+    if (!time) {
+        return ''
+    }
+    let hours = parseInt(time % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+    let minutes = parseInt(time % (1000 * 60 * 60) / (1000 * 60));
+    let seconds = time % (1000 * 60) / 1000;
+    // 格式 00:00:00
+    if (hours < 10) {
+        hours = '0' + hours
+    }
+    if (minutes < 10) {
+        minutes = '0' + minutes
+    }
+    if (seconds < 10) {
+        seconds = '0' + seconds
+    }
+    
+    return   hours + ":" + minutes + ":" + seconds;
+}
+
 ```
