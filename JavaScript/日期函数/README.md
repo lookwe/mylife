@@ -144,7 +144,7 @@ function formatDuring(time) {
     }
     let hours = parseInt(time % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
     let minutes = parseInt(time % (1000 * 60 * 60) / (1000 * 60));
-    let seconds = time % (1000 * 60) / 1000;
+    let seconds = parseInt(time % (1000 * 60) / 1000);
     // 格式 00:00:00
     if (hours < 10) {
         hours = '0' + hours
