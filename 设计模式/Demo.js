@@ -97,3 +97,27 @@ const  userProxy = new Proxy(user, {
 console.log(`我叫${userProxy.name}  我今年${userProxy.age}了`);
 // 处理修改
 userProxy.age = "abc";
+
+/** 中介者模式 */
+// 中介类
+class ChatRoom {
+    static setMsg(user, msg) {
+        // 处理中间层业务 xxx...
+        console.log(`用户：${user}, 发送消息：${msg}`);
+    }
+}
+class ChatUser {
+    constructor (name) {
+        this.name = name
+    }
+
+    sendMessage(msg) {
+        ChatRoom.setMsg(this.name, msg)
+    }
+}
+
+const userA1 = new ChatUser('小红');
+const userA12 = new ChatUser('小张');
+
+userA1.sendMessage('你好，有人吗？')
+userA12.sendMessage('我看到小红发言了')
