@@ -45,7 +45,31 @@
 
 ## 异步编程
 
-## 文件转换 Blob类型
+## Blob对象 上传图片预览&下载
+* Blob对象本质：二进制大对象，原来存储二进制数据；
+* 描述：表示一个不可变，原始数据的类文件对象，可以按文本或者二进制进件读写，Flie文件对象。也是继承与它。并扩展了支持用户系统磁盘的文件
+* 实现代码：
+  ```javascript
+  const obj = {name: '你好'}
+  const blobOjb = new Blob(
+      [JSON.stringify(obj, null, 2)], // 二进制数组或文本数组 
+      { type:'application/json' }, // 定义blob类型 必须是 MIME
+    )
+
+  //  文件读取
+  var text = await (new Response(blobOjb)).text();
+  // 【同步】 blol转URL 用于图片类型可以生产链接预览 或者 下载
+  URL.createObjectURL(blobOjb);
+  ```
+## FileReader对象 异步读取
+* 对象描述：用于支持操作，读取用户系统文件或二进制数据。`File` 或者 `Blob` 对象
+* 代码实现
+  ```javascript
+  // 根据上面例子，实现异步生产 原始数据或者file 的URL
+  const fileReader = new FileReader()
+  fileReader.onload = function() { console.log(fileReader) }
+  fileReader.readAsDataURL(blobOjb)
+  ```
 
 ## 防抖&节流&定时阻塞
 * [防抖&节流详细代码实现](./节流与防抖/README.md)
