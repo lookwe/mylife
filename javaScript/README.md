@@ -61,7 +61,7 @@
   // 【同步】 blol转URL 用于图片类型可以生产链接预览 或者 下载
   URL.createObjectURL(blobOjb);
   ```
-## FileReader对象 异步读取
+## FileReader对象 异步读取文件信息
 * 对象描述：用于支持操作，读取用户系统文件或二进制数据。`File` 或者 `Blob` 对象
 * 代码实现
   ```javascript
