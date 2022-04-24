@@ -28,6 +28,7 @@
 1. [请求代理跨域](#请求代理跨域)
 1. [keep-alive及原理](#keep-alive及原理)
 1. [Vue哪些优化点](#Vue哪些优化点)
+1. [Vue模板装饰器方案](#Vue模板装饰器方案)
 
 
 ### 配置全局路径别名
@@ -247,6 +248,19 @@ chainWebpack(config) {
 * for循环合理用于Key，提高diff算法快速定位
   * 在列表有增删操作中，主要key不能设置index
 
+### Vue模板装饰器方案
+* 本质：装饰器其实就是一个函数；
+* 作用：在不修改原始[类、方法、属性]等源代码之上。做额外扩展功能
+* 方案：``vue-property-decorator``
+* 主要API：
+    * Component: 类装饰器
+    * Emit：方法装饰器
+    * Prop: 属性装饰器
+* 访问权限:
+    * 公共：`public`
+    * 受保护: `protected` 当前类或子孙类可访问
+    * 私有：`private`
+    * 只读：`oradonly`
 
 
 
