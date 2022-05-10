@@ -18,3 +18,23 @@ export function formatMoney(number, places, symbol, thousand, decimal) {
       j = (j = i.length) > 3 ? j % 3 : 0;
     return symbol + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "");
   }
+
+// 查询对象最深层
+function getLevel(obj = {}){
+    let result = 1;
+    const fn = (params, level = 0) => {
+        if ( typeof params === 'object' && params !== null) {
+            Object.values(params).forEach(item => {
+                if ( typeof item === 'object' && item !== null) {
+                    fn(item, level + 1)
+                } else {
+                     result = level + 1 > result ? level + 1 : result
+                }
+            })
+        } else {
+             result = level > result ? level : result
+        }
+    }
+    fn(obj)
+    return result
+}
