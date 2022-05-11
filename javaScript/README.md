@@ -19,6 +19,9 @@
 ## typeof 判断返回哪些字符串
 * 返回8种：string、number、boolean、undefined、object、funcaion、bigint、sybmol
 
+## 常见属性、API、函数、技术等一些对比
+* [常见属性、API、函数、技术等一些对比](%E5%B8%B8%E8%A7%81%E6%8A%80%E6%9C%AF%E5%AF%B9%E6%AF%94.md)
+
 
 ## 对象拷贝克隆
 * 浅拷贝
