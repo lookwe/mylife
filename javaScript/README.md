@@ -9,11 +9,15 @@
   * Null（空）
   * Undefined（未定义）
   * Sybmol（sybmol唯一标识）
+  * BigInt（任意大整数）
 
 * 引用类型
    * Object（对象）
    * Array （数组）
    * Function（函数）
+
+## typeof 判断返回哪些字符串
+* 返回8种：string、number、boolean、undefined、object、funcaion、bigint、sybmol
 
 
 ## 对象拷贝克隆
