@@ -38,3 +38,15 @@ function getLevel(obj = {}){
     fn(obj)
     return result
 }
+
+// 数组去重
+Array.prototype.rempD = function() {
+  //  return Array.from(new Set(this))
+  let arr = []
+  for(let i = 0; i<this.length;i++) {
+      if (arr.indexOf(this[i]) == -1) {
+        arr.push(this[i])
+      }
+  }
+  return arr
+}
