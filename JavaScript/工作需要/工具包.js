@@ -69,3 +69,18 @@ function ID(){
     return function(){return id++}
 }
 const getID = ID()
+// 为对象添加迭代器
+function addIterator(obj) {
+    Object.prototype[Symbol.iterator] = function () {
+        const keys = Object.keys(this);
+        let index = 0;
+        return {
+            next: () => {
+                return {
+                    value: [keys[index], this[keys[index++]]],
+                    done: index > keys.length
+                };
+            }
+        }
+    }
+}
