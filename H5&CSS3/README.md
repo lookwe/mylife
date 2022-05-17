@@ -20,6 +20,37 @@
 ## web缓存工具
 * [web缓存工具](./Web缓存.md)
 
+## 元素垂直居中方式
+* 第一种
+```css
+.content{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+```
+* 第二种
+```css
+.content{
+	position: absolute;
+	top: 50%;
+	margin-top: -10em;
+	margin-left: -10em;
+	height: 20em;
+}
+```
+* 第三种
+```css
+.content{
+	position: absolute;
+	margin：auto；
+	top: 50%;	
+	left: 50%;	
+	transform:translate(-50%,-50%);
+}
+
+```
+
 ## CSS继承性
 当某天元素下，有大量子元素，且样式相同，那么则利用继承性，节约代码量
 * 子元素可继承父类元素样式有：

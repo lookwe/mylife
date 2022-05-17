@@ -66,9 +66,6 @@ function sumEven() {
 // 缓存id
 function ID(){
     let id = 0
-    const add = function(){
-        return id++
-    }
-    return add
+    return function(){return id++}
 }
 const getID = ID()
