@@ -44,9 +44,31 @@ Array.prototype.rempD = function() {
   //  return Array.from(new Set(this))
   let arr = []
   for(let i = 0; i<this.length;i++) {
-      if (arr.indexOf(this[i]) == -1) {
-        arr.push(this[i])
-      }
+      if (arr.indexOf(this[i]) == -1) arr.push(this[i])
   }
   return arr
 }
+// 定时Promise
+function sllep(ms) {
+    return new Promise((resolve, reject) => {
+        try {
+            setTimeout(() => { resolve() }, ms)
+        } catch (error) {
+            reject()
+        }
+    })
+}
+// 输入不定数字 求特定之和
+function sumEven() {
+   const arr = Array.from(arguments).filter(item => item % 2 === 0)
+   return arr.reduce((pro,last) => pro+last)
+}
+// 缓存id
+function ID(){
+    let id = 0
+    const add = function(){
+        return id++
+    }
+    return add
+}
+const getID = ID()
