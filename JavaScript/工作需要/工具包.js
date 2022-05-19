@@ -70,7 +70,7 @@ function ID(){
 }
 const getID = ID()
 // 为对象添加迭代器
-function addIterator(obj) {
+function addIterator() {
     Object.prototype[Symbol.iterator] = function () {
         const keys = Object.keys(this);
         let index = 0;
@@ -84,3 +84,26 @@ function addIterator(obj) {
         }
     }
 }
+// 遍历树
+function flatTree(tree) {
+    const newTree = []
+    fromTree(tree)``
+    function fromTree(treeArr) {
+       if(!Array.isArray(treeArr)) return;
+        treeArr.map(item => {
+            item.label && newTree.push(item.label)
+            item.children && fromTree(item.children)
+        })
+    }
+    return newTree
+}
+// 定时任务
+function repeat(fn, times, wait) {
+    let time = 0
+    const timesInter = setInterval(() => {
+        time++
+        fn()
+        if (time===times) clearInterval(timesInter)
+    },wait)
+}
+repeat(() => {console.log(123)}, 5, 1000)

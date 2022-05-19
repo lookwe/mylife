@@ -159,3 +159,7 @@
         color: var(--globl-color)
     }
     ```
+
+## CSS动画和Canvas动画
+* CSS动画调用浏览器
+* Canvas调用系统显卡
