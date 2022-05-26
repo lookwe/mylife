@@ -35,3 +35,10 @@
 * 应用级：初始化(只执行一次)、显示、隐藏、监听错误，
 * 页面级：显示、隐藏、onLoad、onReady、onUnload、onPullDownRefresh、onReachBottom....
 * 隐藏在后台一段时间，系统资源不足则自动销毁
+* 小程序页面是以栈结构维护的。当路由发生变化，栈就变化，生命周期也是；
+
+## 小程序跳转页面方式
+* navigateTo、redirectTo、只能打开非tabBar页面
+* switchTab 能打开tabBar，但是不能传参；
+* reLaunch 打开任意页面
+* 路由跳转参数，在onLoad里获取
