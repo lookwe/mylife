@@ -42,3 +42,7 @@
 * switchTab 能打开tabBar，但是不能传参；
 * reLaunch 打开任意页面
 * 路由跳转参数，在onLoad里获取
+
+
+## 小程序经验
+* 提供了3种 RESTful API接口。用于生产
