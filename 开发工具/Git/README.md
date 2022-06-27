@@ -46,4 +46,4 @@ git merge test
 * 使用方式
 1. 暂存代码：`git stash save xxx...`
 2. 查看暂存：`git stash list`
-3. 恢复暂存：`git stash pop 0`
+3. 恢复暂存：`git stash pop 0` // 0 代表暂存列表中的key
