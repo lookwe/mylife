@@ -1,6 +1,7 @@
 # Git个人笔记
 
 * [git代码暂存](#git代码暂存)
+* [git查看误删除文件及恢复](#git查看误删除文件及恢复)
 
 ## git 分支提交 然后合并到master
 
@@ -47,3 +48,10 @@ git merge test
 1. 暂存代码：`git stash save xxx...`
 2. 查看暂存：`git stash list`
 3. 恢复暂存：`git stash pop 0` // 0 代表暂存列表中的key
+
+## git查看误删除文件及恢复
+* 当我们不小心删除文件时，错了撤回和垃圾箱回收，还可以使用git
+* 使用方式
+1. 查看最近被删除的文件：`git fsck --lost -found`
+2. 查看误删除内容：`git show '编号'`
+3. 恢复合并删除文件：`git merge '编号'`
