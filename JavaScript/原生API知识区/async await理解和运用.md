@@ -11,7 +11,7 @@
 ```js
 async User () {
    const reluId = await apiGetUser(); // 先执行。执行完才执行下一步
-   const userInof = awit apiUserByreId(reluId); // 上面执行完，到我
+   const userInof = await apiUserByreId(reluId); // 上面执行完，才到我，如果上面出错，我就不执行了，整个函数结束
    returm 	userInof; 	
 }
 ```
