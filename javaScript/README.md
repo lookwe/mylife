@@ -8,6 +8,7 @@
 * [FileReader对象 异步读取文件信息](#filereader对象-异步读取文件信息)
 * [防抖&节流&定时阻塞](#防抖节流定时阻塞)
 * [上下文this指向](#上下文this指向)
+* [forin-forof区别](#forin-forof区别)
 
 
 ## 基础-原始类型&引用类型
@@ -102,3 +103,15 @@
     * `apply()` 参数1：this指向对象，参数2：数组
     * `call()`  参数1：this指向对象，参数2：无限延长,隔开
     * `bind()`  参数1：this指向对象, 参数2：无限延长,隔开
+
+## forin-forof区别
+* 公共点： 都支持对象，数组循环、break、continue
+* 区别点:
+  * 数组：
+    * forin 遍历出下标
+    * forof 遍历出每一项内容
+  * 对象：
+    * forin 遍历出对象所有key值
+    * forin 遍历普通对象报错，缺失迭代器，只能循环带有迭代器接口的对象，例如：map、set、classList
+* 特殊场景
+  * 可以使用 `Object.xxx` 提供的方式返回迭代器接口结构，可使用forin遍历
