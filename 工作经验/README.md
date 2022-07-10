@@ -52,7 +52,7 @@
 * 是否能够稳定公司未来5-10年
 * 工具：Openbase
 
-## github超级搜索1
+## github超级搜索
 * 查询vue stars数量超过1000 最后更新日期打印2020-01-01
     * `in:name vue stars:>1000 pushed:>2022-06-01`
 * 其他关键字：
