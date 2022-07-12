@@ -2,18 +2,19 @@
 
 > 网页三剑客之2兄弟
 * [CSS选择器执行顺序](#CSS选择器执行顺序)
+* [页面问题于坑记](#页面问题于坑记)
 
 ## 目录
 - flex弹性
 - html-css常用属性记忆表
 - Web缓存策略
 - `CSS中的BFC`是什么
-  - BFC大白话就是例如西游记孙悟空给唐三藏防御妖精画的保护圈，CSS中也是同理，BFC可以有效保护我们样式布局结构，防止浮动坍塌，清除浮动，外边距坍塌
-  - 开启BFC方式
-    - position： ablsolute | fied
-    - flat: 非none
-    - overflow: 不是visble
-    - display: inline-block | fiex
+- BFC大白话就是例如西游记孙悟空给唐三藏防御妖精画的保护圈，CSS中也是同理，BFC可以有效保护我们样式布局结构，防止浮动坍塌，清除浮动，外边距坍塌
+- 开启BFC方式
+- position： ablsolute | fied
+- flat: 非none
+- overflow: 不是visble
+- display: inline-block | fiex
 
 ## html视频元素
 * [video元素精髓](./video/README.md)
@@ -55,10 +56,10 @@
 ## CSS继承性
 当某天元素下，有大量子元素，且样式相同，那么则利用继承性，节约代码量
 * 子元素可继承父类元素样式有：
-  * text-*
-  * font-*
-  * line-*
-  * color颜色
+* text-*
+* font-*
+* line-*
+* color颜色
 
 * 特殊：line-height: 1.5，没有带单位的则是继承父亲或者自己字体大小的1.5b倍行高
 * 除了继承用户自己写的css，还会继承浏览器默认样式
@@ -95,71 +96,71 @@
 * `交集选择器`: div,p,.name{} 选择的元素共享一个样式 
 
 * **属性选择器**
-    * `属性选择器：` a[target=_blank] 筛选所有a标签中属性target是_blank的
-    * `属性包含选择器：` div[title~=name] 筛选div属性title中包裹带有name的
-    * `属性开头选择器：` img[src^='https'] 筛选img属性src以htttps开头的所有img标签
-    * `属性结尾选择器：` img[src$='.png'] 筛选img属性src以 .png 结尾的img标签
+* `属性选择器：` a[target=_blank] 筛选所有a标签中属性target是_blank的
+* `属性包含选择器：` div[title~=name] 筛选div属性title中包裹带有name的
+* `属性开头选择器：` img[src^='https'] 筛选img属性src以htttps开头的所有img标签
+* `属性结尾选择器：` img[src$='.png'] 筛选img属性src以 .png 结尾的img标签
 
 * **伪类选择器**
-    * `焦点伪类：` :focus
-    * `悬浮伪类：` :hover
-    * `前置伪类`：p::after 往p元素前面追加内容
-    * `后置伪类`：p::before 往p元素后面追加内容
-    * `光棍伪类`：p`:empty 选择没有子元素的p标签
-    * `取反伪类`：div`:not(p) 选择div下所有不是p标签的元素
-    * `首个选择器`： div p:first-of-type 或:first-child 选择div下面第一个p标签
-    * `末尾选择器：` ul li:last-child 或 last-of-type 选择ul下最后一个li
-    * `正序筛选伪类：` :nth-child(2)  正序第一个开始自由筛选第几个元素
-    * `倒序筛选伪类：` :nth-last-child(2)  倒序最末尾开始自由筛选第几个元素
-    * `注意点` nth-child(2) 和 nth-of-type(2) 区别：
-        * p:nth-child(2) 找位置是2的p元素，如果位置2不是p元素不生效
-        * p:nth-of-type(2) 找下面p元素中排在第二的，及时前面有很多其他元素，类似兄弟选择
+* `焦点伪类：` :focus
+* `悬浮伪类：` :hover
+* `前置伪类`：p::after 往p元素前面追加内容
+* `后置伪类`：p::before 往p元素后面追加内容
+* `光棍伪类`：p`:empty 选择没有子元素的p标签
+* `取反伪类`：div`:not(p) 选择div下所有不是p标签的元素
+* `首个选择器`： div p:first-of-type 或:first-child 选择div下面第一个p标签
+* `末尾选择器：` ul li:last-child 或 last-of-type 选择ul下最后一个li
+* `正序筛选伪类：` :nth-child(2)  正序第一个开始自由筛选第几个元素
+* `倒序筛选伪类：` :nth-last-child(2)  倒序最末尾开始自由筛选第几个元素
+* `注意点` nth-child(2) 和 nth-of-type(2) 区别：
+* p:nth-child(2) 找位置是2的p元素，如果位置2不是p元素不生效
+* p:nth-of-type(2) 找下面p元素中排在第二的，及时前面有很多其他元素，类似兄弟选择
 
 ## CSS开发常用函数
 1. `calc() `: 计算箱数函数；
-    ```css
-    .test {
-        /* 最终宽度是： 父亲总宽度 减去 200px  */
-        width: calc(100% - 200px);
-    }
-    ```
+```css
+.test {
+/* 最终宽度是： 父亲总宽度 减去 200px  */
+width: calc(100% - 200px);
+}
+```
 2. `attr() `: 获取元素标签上的属性值，很js中``getAttribute()``方法读取方式一样   
-    html
-    ```html
-    <div data-content="我是div" class="div-box">我是div</div>
-    ```
-    css
-    ```css
-    .div-box {
-        :before {
-             /* content： "我是div"  */
-            content: attr(data-content)
-        }
-    }
-    ```
-    目前该函数具有兼容性，也暂时支持`content`属性，其他属性试验中...
+html
+```html
+<div data-content="我是div" class="div-box">我是div</div>
+```
+css
+```css
+.div-box {
+:before {
+/* content： "我是div"  */
+content: attr(data-content)
+}
+}
+```
+目前该函数具有兼容性，也暂时支持`content`属性，其他属性试验中...
 
 3. `linear-gradient() :` 上下背景颜色渐变
-    ```css
-    .test {
-        background-image: linear-gradient(red, yellow, blue);
-    }
-    ```
+```css
+.test {
+background-image: linear-gradient(red, yellow, blue);
+}
+```
 4. `radial-gradient() :` 圆环背景颜色渐变。实现太阳，灯光逼真效果；
-    ```css
-    .test {
-        background-image: radial-gradient(#fff, #000);
-    }
-    ```
+```css
+.test {
+background-image: radial-gradient(#fff, #000);
+}
+```
 5. `var() :` 自定义全局属性，和less定义变量一个道理
-    ```css
-    :root {
-        --globl-color: red;
-    }
-    .test {
-        color: var(--globl-color)
-    }
-    ```
+```css
+:root {
+--globl-color: red;
+}
+.test {
+color: var(--globl-color)
+}
+```
 
 ## CSS动画和Canvas动画
 * CSS动画调用浏览器
@@ -169,3 +170,8 @@
 ## CSS选择器执行顺序 
 * 浏览器在CSS渲染页面时，为了能快速定位及重绘回流等影响，在CSS选择器上面执行循环有所不同。
 * 执行顺序：从最后开始执行，孙子->爸爸->-爷爷->祖先
+
+## 页面问题于坑记
+* 不同类型字符串自动换行
+* 对接接口，接受的文本和默认文本，不同类型字符串，会默认换行，则会达不到目前的效果
+* 解决：pw:ainn;
