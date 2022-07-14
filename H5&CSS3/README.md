@@ -146,9 +146,10 @@ content: attr(data-content)
 background-image: linear-gradient(red, yellow, blue);
 }
 ```
-4. `radial-gradient() :` 圆环背景颜色渐变。实现太阳，灯光逼真效果；
+4. 渐变: `radial-gradient() :` 圆环背景颜色渐变。实现太阳，灯光逼真效果；
 ```css
 .test {
+    /* 可以充上之下，从左至右。或者设置角度 deg */
 background-image: radial-gradient(#fff, #000);
 }
 ```
@@ -177,4 +178,4 @@ color: var(--globl-color)
     * 解决：pw:ainn;
 * 特殊字符超出文本宽度
     * 使用padding设置也无效，正常文字显示ok。特殊字符不听使唤
-    * 解决：bos：content
+    * 解决：bos：cont
