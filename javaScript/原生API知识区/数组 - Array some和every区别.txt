@@ -14,6 +14,6 @@ some 和 every 区别：
 空数组返回 fasle
 
 every:
-判断整个数组，是否满足条件，是则返回ture
+判断整个数组，是否满足条件，如果其中一个不满足，停止循环返回false、 都成功-则返回ture
 一个遇到 false 则停止循环 > 返回 false  
 空数组返回 true
