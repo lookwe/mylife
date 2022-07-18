@@ -140,16 +140,17 @@ content: attr(data-content)
 ```
 目前该函数具有兼容性，也暂时支持`content`属性，其他属性试验中...
 
-3. `linear-gradient() :` 上下背景颜色渐变
+3. `linear-gradient() :` 横向纵向-背景颜色渐变
 ```css
 .test {
-background-image: linear-gradient(red, yellow, blue);
+/* 可以充上之下，从左至右。或者设置角度 deg */
+/* 第一参数设置角度或者方向  */
+background-image: linear-gradient(to bottom, red, yellow, blue);
 }
 ```
-4. 渐变: `radial-gradient() :` 圆环背景颜色渐变。实现太阳，灯光逼真效果；
+4. 渐变: `radial-gradient() :` 圆环-背景颜色渐变。实现太阳，灯光逼真效果；
 ```css
 .test {
-    /* 可以充上之下，从左至右。或者设置角度 deg */
 background-image: radial-gradient(#fff, #000);
 }
 ```
@@ -173,9 +174,9 @@ color: var(--globl-color)
 * 执行顺序：从最后开始执行，孙子->爸爸->-爷爷->祖先
 
 ## 页面问题于坑记
-* 不同类型字符串自动换行
+* `不同类型字符串自动换行`
     * 对接接口，接受的文本和默认文本，不同类型字符串，会默认换行，则会达不到目前的效果
-    * 解决：pw:ainn;
-* 特殊字符超出文本宽度
+    * 解决：`word-break:break-all`;
+* `特殊字符超出文本宽度`
     * 使用padding设置也无效，正常文字显示ok。特殊字符不听使唤
-    * 解决：bos：cont
+    * 解决：box-sizing: content-box;
