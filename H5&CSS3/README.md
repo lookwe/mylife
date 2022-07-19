@@ -183,9 +183,9 @@ color: var(--globl-color)
 * `让span标签显示和文本域输入框效果一直`：
     * 浏览器对连续空格和回车只能识别转义后的，连续空格会过滤成一个空格
     * 解决：
-    ```
+    ```java
         // 把回车和空格转义
 	getToEnterCode(name) {
-	   return name.replace(/(\n|\r|\r\n|↵)/g, '</br>').replace(/\s/g, '&nbsp;')
+	    return name.replace(/(\n|\r|\r\n|↵)/g, '</br>').replace(/\s/g, '&nbsp;')
 	},
     ```
