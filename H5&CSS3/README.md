@@ -180,3 +180,12 @@ color: var(--globl-color)
 * `特殊字符超出文本宽度`
     * 使用padding设置也无效，正常文字显示ok。特殊字符不听使唤
     * 解决：box-sizing: content-box;
+* `让span标签显示和文本域输入框效果一直`：
+    * 浏览器对连续空格和回车只能识别转义后的，连续空格会过滤成一个空格
+    * 解决：
+    ```
+        // 把回车和空格转义
+	getToEnterCode(name) {
+	   return name.replace(/(\n|\r|\r\n|↵)/g, '</br>').replace(/\s/g, '&nbsp;')
+	},
+    ```
