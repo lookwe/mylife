@@ -3,6 +3,7 @@
 > 网页三剑客之2兄弟
 * [CSS选择器执行顺序](#CSS选择器执行顺序)
 * [页面问题于坑记](#页面问题于坑记)
+* [超酷炫特效页面](#超酷炫特效页面)
 
 ## 目录
 - flex弹性
@@ -189,3 +190,9 @@ color: var(--globl-color)
 	    return name.replace(/(\n|\r|\r\n|↵)/g, '</br>').replace(/\s/g, '&nbsp;')
 	},
     ```
+    
+## 超酷炫特效页面
+* css3动画特效网站：https://www.wegame.com.cn/home
+* css3酷炫网站：https://matchmaker.merci-michel.com/zh-tw
+* 特效视觉差：http://matthew.wagerfield.com/parallax/
+
