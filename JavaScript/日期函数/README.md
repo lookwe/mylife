@@ -160,3 +160,11 @@ function formatDuring(time) {
 }
 
 ```
+
+## 两个日期比较大小
+```javascript
+// 传入 时间字符串， 2022-09-01
+const isDatelarge = (data1, data2) => {
+    return new Date(data1) > new Date(data2)  ? true : false
+}
+```
