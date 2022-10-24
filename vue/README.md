@@ -288,3 +288,21 @@ chainWebpack(config) {
   * 按需加载懒加载：通过用户交互行为，在决定下一步是否需要加载数据，比如图片懒加载，tree级联，树菜单等等
   * 优化更新逻辑，使用`v-memo`缓存子树，设置条件的更新，提高复用，避免不必要的更新
 
+### Vue项目之启动秒数开启
+* 在项目开发时，启动项目是必须的，但项目庞大后，启动往往时间越长，亲自见过最长。1.30秒才完成
+* `解决方案`：使用webpack插件，使用DLL缓存机制，将构建资源映像在电脑磁盘中，即使电脑关机开启，不影响缓存。
+* `原理过程`：第一次打包还是需要正常时间，打包后会将内容存储在映射表中、第二次启动则优先寻找缓存，有则取，无则构建打包（显著提速90%）
+* `实操代码`：
+  * 安装依赖：`npm install --save-dev hard-source-webpack-plugin `
+  * 配置文件中代码：
+  ```javascript
+    const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+
+    module.exports = {
+      // ......
+      plugins: [
+        new HardSourceWebpackPlugin() // <- 直接加入这行代码就行
+      ]
+    }
+   ```
+
