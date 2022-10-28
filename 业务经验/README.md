@@ -12,7 +12,8 @@
 1. [多端设备自适应和响应式](多端设备自适应和响应式)
 1. [消息订阅&累计订阅信息](消息订阅&累计订阅信息)
 1. [移动端横屏适配](移动端横屏适配)
-1. [产品隐私安全合规]
+1. [产品隐私安全合规](产品隐私安全合规)
+1. [input搜索框输入中文问题解决](#input搜索框输入中文问题解决)
 
 ## 微信支付
 * 概述：
@@ -56,6 +57,16 @@
 * 实现方案：
 * 微信小程序：[https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/authorize.html](授权)
 * uniapp： [uniapp授权](https://uniapp.dcloud.net.cn/api/other/authorize.html)
+
+
+## input搜索框输入中文问题解决
+* 在做搜索查询需求中，input输入是，如果带拼音中文，则会出现无用频发搜索接口请求，例如：深圳，shenzhen，用oninput事件，则会s,h,e,n....触发事件请求接口
+* 如果想让正常支持英文，有支持拼音汉字。那么可以使用input事件:
+* `compositionstart`: 检查到输入框中有拼音汉字在拼
+* `compositionend`： 检查拼音汉字拼写完毕
+* 可在设置一个变量，在拼音开始时，设置 `false` 标识不触发接口请求，拼写完毕设置`true` 可执行接口请求
+* 相关补充：在Vue框架，源码里对 `v-mode`也是做过同理的优化操作，所以vue项目中不需要手动处理了
+
 
 
 
