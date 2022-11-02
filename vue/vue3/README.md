@@ -59,4 +59,11 @@ return {
 * reactive 区别与ref 他返回的响应式使对象每有被`refImpl`包裹，所以不需要ref一样`.value`才能获取到值
 
 ## vue3组件局部和全局注册
-* 
+* 在3种执行在`setup script标签`中引入即可在`template`中使用、无需再 components注册
+* 但是在普通正常 `script标签`中这需要components注册
+* 区别点：
+    * 局部对组件关系链更加友好，方便`tree-shaking`
+    * 全局一次引入次次方便，但追踪效果差，不能`tree-shaking`
+    * 在大批量页面使用同一组件，则推荐全局，如少出几个页面推荐组成
+
+
