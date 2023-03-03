@@ -9,8 +9,10 @@
 * [防抖&节流&定时阻塞](#防抖节流定时阻塞)
 * [上下文this指向](#上下文this指向)
 * [forin-forof区别](#forin-forof区别)
+* [in和hasOwnProperty区别](#in和hasOwnProperty区别)
 
 ## 基础-原始类型&引用类型
+![在这里插入图片描述](https://img-blog.csdnimg.cn/a37518e4db99405bac6fc6b4bab478f7.png#pic_center)
 * 基本数据类型
   * string（字符串）
   * Number（数值）
@@ -22,8 +24,11 @@
 
 * 引用类型
    * Object（对象）
-   * Array （数组）
-   * Function（函数）
+        * Array
+        * RegExp
+        * Date
+        * Math
+        * Function
 
 ## typeof 判断返回哪些字符串
 * 返回8种：string、number、boolean、undefined、object、funcaion、bigint、sybmol
@@ -54,8 +59,8 @@
 ## 作用域
 
 ## 闭包与模块化
-* 闭包的本质：
-* 闭包的市场常场景：
+* 闭包的本质：函数内部返回函数调用，
+* 闭包的市场常场景：需要缓存，不被浏览器垃圾回收，计时器，数据隔离区
 * 
 
 ## 面向对象
@@ -107,10 +112,19 @@
 * 公共点： 都支持对象，数组循环、break、continue
 * 区别点:
   * 数组：
-    * forin 遍历出下标
-    * forof 遍历出每一项内容
+    * `for in` 遍历出下标
+    * `for of` 遍历出每一项内容
   * 对象：
-    * forin 遍历出对象所有key值
-    * forin 遍历普通对象报错，缺失迭代器，只能循环带有迭代器接口的对象，例如：map、set、classList
+    * `for in` 遍历出对象所有key值包括原型
+    * `for of` 遍历普通对象报错，缺失迭代器，只能循环带有迭代器接口的对象，例如：`map、set、classList`
 * 特殊场景
   * 可以使用 `Object.xxx` 提供的方式返回迭代器接口结构，可使用forin遍历
+
+
+## in和hasOwnProperty区别
+* 公共点：两者都是检测对象里面是否包含某个属性存在，返回 ture、false
+* 区别点：
+    * `in`: 会依次往上查询，自身不存在，则查对象原型链，追溯到最顶原型Object
+    * `hasOwnProperty`: 只查本身是否包含，不会追溯原型链。
+* 特殊场景：
+    * 在框架源码中，框架内部使用`for in`循环时。会第一条`if(对象.hasOwnProperty(属性)) `判断
