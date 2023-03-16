@@ -196,3 +196,8 @@ color: var(--globl-color)
 * css3酷炫网站：https://matchmaker.merci-michel.com/zh-tw
 * 特效视觉差：http://matthew.wagerfield.com/parallax/
 
+## 实用CSS属性
+* 宽度高度
+    * 宽度自适应： `width：auto`
+    * 宽度有内容宽度填充: `width: fit-content`
+
