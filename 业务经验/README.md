@@ -16,6 +16,7 @@
 1. [input搜索框输入中文问题解决](#input搜索框输入中文问题解决)
 1. [部分老款手机微信浏览器样式兼容](#部分老款手机微信浏览器样式兼容)
 1. [微信浏览器公众号软盘高度收起问题](#微信浏览器公众号软盘高度收起问题)
+1. [ios版本过高导致APP版本识别不到](#ios版本过高导致APP版本识别不到)
 
 ## 微信支付
 * 概述：
@@ -77,6 +78,53 @@
 * 在低版本华为手机中，设图片设置固定rem像素，旁边元素不设置宽，父元素flex，发现图片会变形
 * `解决`：图片兄弟元素这是， `flex: 1` 解决
 
+## ios版本过高导致APP版本识别不到
+* 背景：需求开发中遇到同ios同账号，不同版本系统下，通过浏览器API`window.navigator.userAgent`识别APP版本环境
+* 问题：按钮通过校验版本号判断显示隐藏，A用户ios15能正常展示，B用户ios17则识别不到
+* 解决：
+```javascript
+function iosJudgeVersion(targetV, appName) {
+    const compareVersion = (version1, version2) => {
+        let v1 = version1.split('.')
+        let v2 = version2.split('.')
+        let len = Math.max(v1.length, v2.length)
+        for (let i = 0; i < len; i++) {
+            let num1 = parseInt(v1[i]) || 0
+            let num2 = parseInt(v2[i]) || 0
+            if (num1 > num2) {
+            return 1
+            } else if (num1 < num2) {
+            return -1
+            }
+        }
+        return 0;
+    }
+
+    const u = window.navigator.userAgent.toLowerCase()
+    // 判断目标环境 及 目标应用
+    if (u.indexOf(`user_agent/${ appName }`) != -1 && u.indexOf(`user_agent/${ appName }(ios`) > -1) {
+        const UA_FLAG = `user_agent/${ appName }(ios`.length
+        const VERSION = targetV
+        const firstIndex = u.lastIndexOf(`user_agent/${ appName }(ios`)
+        const versionIos = u.substring(firstIndex + UA_FLAG, u.length - 1)
+        const compareResult = compareVersion(versionIos, VERSION)
+        console.log('ios 目标版本:', versionIos)
+        console.log('ios 当前版本:', compareResult)
+        // 如果低于5.0.60版本则特殊处理
+        if (compareResult === -1) {
+            // 版本过低
+            return false
+        } else {
+           // 符合最低版本
+           return true
+        }
+    }
+}
+
+// 是否满足版本
+const isSatisfy =  iosJudgeVersion('5.0.60', 'boyu')
+```
+* 总计：不同手机系统版本，对应浏览器内核有有所区别，版本越高功能也越多及少部分API会改动，需要做对应兼容处理及备用方法
 
 ## 微信浏览器公众号软盘高度收起问题
 * 解决部分手机软盘收起后高度无法恢复问题
