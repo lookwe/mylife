@@ -14,6 +14,7 @@
 ## 常用事件
 * `暂停`：Video.pause()
 * `播放`：Video.play()
+* '哈哈哈'
 
 ## 设置播放时间 & 获取当前播放时间 `currentTime`
 * `获取`： Video.currentTime
