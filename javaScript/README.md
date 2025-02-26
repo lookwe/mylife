@@ -10,6 +10,7 @@
 * [上下文this指向](#上下文this指向)
 * [forin-forof区别](#forin-forof区别)
 * [in和hasOwnProperty区别](#in和hasOwnProperty区别)
+* [立即执行函数IIFE](#立即执行函数IIFE)
 
 ## 基础-原始类型&引用类型
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/a37518e4db99405bac6fc6b4bab478f7.png#pic_center)
@@ -129,3 +130,26 @@
     * `hasOwnProperty`: 只查本身是否包含，不会追溯原型链。
 * 特殊场景：
     * 在框架源码中，框架内部使用`for in`循环时。会第一条`if(对象.hasOwnProperty(属性)) `判断
+
+## 立即执行函数IIFE
+* 声明方式：
+    * 函数声明：`function(){...}`
+    * 函数表达式：`(function(){...})`
+    * 箭头函数：`(()=>{...})`
+* 执行方式：
+    * 函数声明：`function(){...}`
+    * 函数表达式：`(function(){...})`
+* 特点：
+    * 立即执行
+    * 不污染全局变量
+    * 执行一次
+    * 模块化
+    * 闭包
+    * 效率提升（减少全局，局部变量查找）
+* 使用场景：
+    * 数据隔离
+    * 函数自执行
+    * 模块化
+    * 闭包
+    * 效率提升（减少全局，局部变量查找）
+
