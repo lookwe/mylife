@@ -7,7 +7,8 @@
 1. [ref 响应式](#ref响应式)
 1. [reactive 和 toRefs](#reactive和toRefs)
 1. [vue3 组件局部和全局注册](#vue3组件局部和全局注册)
-1. [Vue 3 移除了哪些 Vue 2 的功能](#vue3移除了哪些vue2的功能)
+1. [Vue3 移除了哪些 Vue 2 的功能](#vue3移除了哪些vue2的功能)
+1. [vue3 新实用 API](#vue3新实用api)
 
 ## Vue3 安装
 
@@ -77,7 +78,7 @@ return {
   - 全局一次引入次次方便，但追踪效果差，不能`tree-shaking`
   - 在大批量页面使用同一组件，则推荐全局，如少出几个页面推荐组成
 
-## Vue 3 移除了哪些 Vue 2 的功能
+## vue3 移除了哪些 vue2 的功能
 
 - 移除全局挂载 API 等需要全局挂载的，需要在 main.js 中手动挂载
   - `component、directive、filter、mixin`
@@ -106,3 +107,21 @@ return {
   - 例如：`<Child :title.sync="xxx" />`
   - 原因：与双向绑定的使用场景不符，且容易导致状态不一致
   - 替代：使用 多个 `v-model` 指令或 `defineModel` 宏
+
+## vue3 新实用 api
+
+- `defineModel` 宏
+  - 例如：`defineModel({modelValue: {type: String, default: ''}})`
+  - 场景：
+    - 子组件需要接收父组件传递的 props 并进行响应式处理
+    - 子组件需要触发父组件事件并传递数据
+- `defineProps` 和 `defineEmits`
+
+  - 例如：
+    - `defineProps({modelValue: {type: String, default: ''}})`
+    - `defineEmits(['update:modelValue'])`
+
+- `defineExpose`
+  - 例如：`defineExpose({xxx})`
+  - 场景：
+    - 子组件需要暴露一些方法或属性给父组件调用
