@@ -100,6 +100,6 @@
 
 ## AI环境Python搭建
 
--
+- [AI环境Python搭建](./AI环境Python搭建/README.md)
 
 ---

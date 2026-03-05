@@ -25,7 +25,10 @@
   1. 下载: https://ollama.com/download
   2. 安装模式: `ollama run qwen2.5-coder:7b` (阿里通义千问的代码专用版)
 
-## VS Code拓展pythons 推荐
+- windows 安装 UV 包管理器 (python下一代包管理器,更快更好用)
+  1. 打开PowerShell: `powershell -c "irm https://astral.sh/uv/install.ps1 | iex"`
+
+## VS Code拓展python 推荐
 
 - `Python` (微软官方出品)。
 - `Pylance` (提供智能代码补全)。
