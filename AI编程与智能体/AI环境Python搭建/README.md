@@ -19,6 +19,22 @@
      4. `pydantic`: 数据验证，AI 输出结构化数据（JSON）的核心库。
      5. `python-dotenv`: 管理 API Key 等敏感信息，避免硬编码在代码里。
 
+- 极简步骤（推荐）：
+  1. 直接安装UV包管理，然后在安装指定版本python
+
+  ```PowerShell
+    # 1. 安装 uv 工具
+    powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+    # 2. 安装你想要的 Python 版本 (例如 3.13.12)
+    uv python install 3.13.12
+
+    # 3. 初始化项目 (自动创建虚拟环境)
+    mkdir my-project && cd my-project
+    uv init
+    uv add fastapi  # 随便装个包试试
+  ```
+
 ## 本地大模型环境
 
 - 安装 Ollama
@@ -78,3 +94,5 @@
 | JSON 解析           | `JSON.parse(str)`                               | `json.loads(str)`                                       | 注意是 `loads` (load string), 写入是 `dump`                       |
 | 异步/等待           | `async/await` (原生)                            | `async/await` (需 `asyncio` 库)                         | 语法一样，但运行环境不同 (事件循环 vs Node 运行时)                |
 | 定时器              | `setTimeout(() => {}, 1000)`                    | `time.sleep(1)` (同步阻塞)<br>`asyncio.sleep(1)` (异步) | Python 普通 `sleep` 会卡住整个程序，异步需用 `await`              |
+
+##
